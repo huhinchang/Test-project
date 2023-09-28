@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://dbit6mcq8ack3"]
+
+[ext_resource type="Texture2D" uid="uid://cn3ou3mmxs1n6" path="res://icon.svg" id="1_mi5gb"]
+[ext_resource type="Script" path="res://Icon.gd" id="2_skb6q"]
+
+[node name="Icon" type="Sprite2D"]
+position = Vector2(-68, -97)
+texture = ExtResource("1_mi5gb")
+script = ExtResource("2_skb6q")
+
+[node name="Icon2" type="Sprite2D" parent="."]
+position = Vector2(95, 321)
+texture = ExtResource("1_mi5gb")
