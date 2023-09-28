@@ -5,6 +5,10 @@
 [node name="Node2D" type="Node2D"]
 
 [node name="Icon" parent="." instance=ExtResource("1_dn82l")]
+position = Vector2(-736, -205)
 
 [node name="Icon2" parent="." instance=ExtResource("1_dn82l")]
-position = Vector2(232, -194)
+position = Vector2(795, -218)
+
+[node name="Icon3" parent="." instance=ExtResource("1_dn82l")]
+position = Vector2(385, 592)
