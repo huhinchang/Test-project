@@ -1,14 +1,67 @@
-[gd_scene load_steps=2 format=3 uid="uid://btg1lt7j6vvmd"]
+[gd_scene load_steps=8 format=3 uid="uid://btg1lt7j6vvmd"]
 
-[ext_resource type="PackedScene" uid="uid://dbit6mcq8ack3" path="res://MyCharacter.tscn" id="1_dn82l"]
+[ext_resource type="PackedScene" uid="uid://dcyborfq30isl" path="res://Prefabs/paddle.tscn" id="1_8on4g"]
+[ext_resource type="Script" path="res://Scripts/LevelOne.gd" id="1_pes3v"]
+[ext_resource type="PackedScene" uid="uid://d3qoqki085xdd" path="res://Prefabs/ball.tscn" id="2_5dgxi"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ohrpu"]
+size = Vector2(952, 64)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wt865"]
+size = Vector2(955, 64)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_psppw"]
+resource_local_to_scene = true
+size = Vector2(127, 643.25)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kk3ul"]
+resource_local_to_scene = true
+size = Vector2(127, 585.25)
 
 [node name="Node2D" type="Node2D"]
+position = Vector2(45, 58)
+script = ExtResource("1_pes3v")
 
-[node name="Icon" parent="." instance=ExtResource("1_dn82l")]
-position = Vector2(-736, -205)
+[node name="Paddle" parent="." instance=ExtResource("1_8on4g")]
+position = Vector2(17, 93)
 
-[node name="Icon2" parent="." instance=ExtResource("1_dn82l")]
-position = Vector2(795, -218)
+[node name="Paddle2" parent="." instance=ExtResource("1_8on4g")]
+position = Vector2(618, 105)
+side = "p2"
 
-[node name="Icon3" parent="." instance=ExtResource("1_dn82l")]
-position = Vector2(385, 592)
+[node name="Ball" parent="." instance=ExtResource("2_5dgxi")]
+position = Vector2(320, 147)
+
+[node name="Top" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Top"]
+position = Vector2(418, -92)
+shape = SubResource("RectangleShape2D_ohrpu")
+
+[node name="Bottom" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bottom"]
+position = Vector2(416.5, 388)
+shape = SubResource("RectangleShape2D_wt865")
+
+[node name="Right" type="Area2D" parent="."]
+position = Vector2(28, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Right"]
+position = Vector2(725, 154)
+shape = SubResource("RectangleShape2D_psppw")
+
+[node name="Left" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Left"]
+position = Vector2(-111, 157.375)
+shape = SubResource("RectangleShape2D_kk3ul")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(318, 146)
+zoom = Vector2(1.552, 1.552)
+
+[connection signal="body_entered" from="Top" to="." method="_on_top_body_entered"]
+[connection signal="body_entered" from="Bottom" to="." method="_on_bottom_body_entered"]
+[connection signal="body_entered" from="Right" to="." method="_on_right_body_entered"]
+[connection signal="body_entered" from="Left" to="." method="_on_left_body_entered"]
